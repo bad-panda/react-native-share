@@ -39,7 +39,7 @@ RCT_EXPORT_MODULE();
     if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"snapchat://"]]) {
         NSLog(@"video");
         // send a video
-        if ([options[@"url"] rangeOfString:@"mp4"].location != NSNotFound) {
+        if ([[options[@"url"] lowercaseString] rangeOfString:@"mp4"].location != NSNotFound) {
 
             // snap.sticker = sticker; /* Optional */
             NSURL * videoUrl = [NSURL URLWithString: options[@"url"]];
@@ -90,7 +90,7 @@ RCT_EXPORT_MODULE();
             @finally {
             }
         // send image
-        } else if ([options[@"url"] rangeOfString:@"jpg"].location != NSNotFound && ![options objectForKey:@"sticker"]) {
+        } else if ([[options[@"url"] lowercaseString] rangeOfString:@"jpg"].location != NSNotFound && ![options objectForKey:@"sticker"]) {
             NSURL * imageUrl = [NSURL URLWithString: options[@"url"]];
             /* Main image content to be used in Snap */
             SCSDKSnapPhoto *image = [[SCSDKSnapPhoto alloc] initWithImageUrl:imageUrl];
@@ -113,7 +113,7 @@ RCT_EXPORT_MODULE();
                 }
             }];
         // send sticker
-        } else if ([options[@"url"] rangeOfString:@"jpg"].location != NSNotFound && ![options objectForKey:@"sticker"]) {
+        } else if ([[options[@"url"] lowercaseString] rangeOfString:@"jpg"].location != NSNotFound && ![options objectForKey:@"sticker"]) {
             NSURL * stickerUrl = [NSURL URLWithString: options[@"url"]];
             SCSDKSnapSticker *sticker = [[SCSDKSnapSticker alloc] initWithStickerUrl:stickerUrl isAnimated:NO];
             [_scSdkSnapApi startSendingContent:sticker completionHandler:^(NSError *error) {
