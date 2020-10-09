@@ -1,5 +1,5 @@
 {
-  "name": "react-native-share",
+  "name": "@gifyourgame/react-native-share",
   "description": "Social share, sending simple data to other apps.",
   "version": "4.0.2",
   "repository": {
