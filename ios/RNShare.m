@@ -47,6 +47,12 @@
 #import "FacebookStories.h"
 #import "GooglePlusShare.h"
 #import "EmailShare.h"
+
+
+#import "InstagramStories.h"
+// add snapchatshare
+#import "SnapchatShare.h"
+
 #import "RNShareActivityItemSource.h"
 
 @implementation RNShare
@@ -97,6 +103,11 @@ RCT_EXPORT_MODULE()
     @"INSTAGRAM": @"instagram",
     @"INSTAGRAM_STORIES": @"instagramstories",
     @"EMAIL": @"email",
+
+    @"SNAPCHAT": @"snapchat",
+    @"INSTAGRAM_STORIES": @"instagram-stories",
+    @"SHARE_BACKGROUND_IMAGE": @"shareBackgroundImage",
+    @"SHARE_BACKGROUND_VIDEO": @"shareBackgroundVideo",
 
     @"SHARE_BACKGROUND_IMAGE": @"shareBackgroundImage",
     @"SHARE_BACKGROUND_VIDEO": @"shareBackgroundVideo",
@@ -154,7 +165,16 @@ RCT_EXPORT_METHOD(shareSingle:(NSDictionary *)options
             NSLog(@"TRY OPEN email");
             EmailShare *shareCtl = [[EmailShare alloc] init];
             [shareCtl shareSingle:options failureCallback: failureCallback successCallback: successCallback];
+        } else if([social isEqualToString:@"instagram-stories"]) {
+                NSLog(@"TRY OPEN instagram-stories");
+                InstagramStories *shareCtl = [[InstagramStories alloc] init];
+                [shareCtl shareSingle:options failureCallback: failureCallback successCallback: successCallback];
         }
+        else if([social isEqualToString:@"snapchat"]) {
+           NSLog(@"TRY OPEN snapchat");
+           SnapchatShare *shareCtl = [[SnapchatShare alloc] init];
+           [shareCtl shareSingle:options failureCallback: failureCallback successCallback: successCallback];
+       }
     } else {
         RCTLogError(@"key 'social' missing in options");
         return;

@@ -140,6 +140,27 @@ const App = () => {
     }
   };
 
+
+  // SNAPCHAT EXAMPLE
+  shareToSnapchat = async () => {
+    // fetch blob got in a require loop
+    // https://github.com/joltup/rn-fetch-blob/issues/183
+    let shareOptions = {
+      title: "SNAP TEXT CONTENT",
+      url: 'http://mirrors.standaloneinstaller.com/video-sample/small.mp4', //res.path(),
+      type: 'video/mp4', // change type here accordingly
+      attachmentUrl: 'https://snapchat.com',
+      social: 'snapchat'
+    }
+    Share.shareSingle(shareOptions)
+      .then((res) => {
+        // returns undefined
+        console.log('res:', res)
+      }).catch((err) => console.log('err', err))
+  }
+
+
+
   const shareToInstagramStory = async () => {
     const shareOptions = {
       title: 'Share image to instastory',
@@ -204,6 +225,9 @@ const App = () => {
         </View>
         <View style={styles.button}>
           <Button onPress={shareToInstagramStory} title="Share to IG Story" />
+        </View>
+        <View style={styles.button}>
+          <Button onPress={shareToSnapchat} title="Share to Snapchat" />
         </View>
         {Platform.OS === 'ios' && (
           <View style={styles.button}>
