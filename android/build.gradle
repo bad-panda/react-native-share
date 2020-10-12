@@ -42,6 +42,9 @@ repositories {
         // Android JSC is installed from npm
         url "$rootDir/../node_modules/jsc-android/dist"
     }
+    maven {
+        url "https://storage.googleapis.com/snap-kit-build/maven"
+    }
     google()
     jcenter()
 }
@@ -49,4 +52,6 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
+    implementation 'com.snapchat.kit.sdk:creative:1.6.5'
+    implementation 'com.snapchat.kit.sdk:core:1.6.5'
 }
