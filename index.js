@@ -225,6 +225,7 @@ class RNShare {
     PINTEREST: NativeModules.RNShare.PINTEREST || 'pinterest',
     LINKEDIN: NativeModules.RNShare.LINKEDIN || 'linkedin',
     SMS: NativeModules.RNShare.SMS || 'sms',
+    SNAPCHAT: NativeModules.RNShare.SNAPCHAT || 'snapchat',
   };
 
   static InstagramStories = {
